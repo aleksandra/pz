@@ -1,0 +1,358 @@
+body, textarea {
+	font-family: georgia, sans-serif;
+	color:#3e382c;
+	font-size: 11px;
+	background-color: #ffffff;
+}
+
+#tabela {
+	position: absolute; left:100px; top: 0px; 
+}
+
+textarea, input {
+	border: 1px solid #3d5473
+}
+
+a:link, a:visited, a:active{
+	text-decoration:none;
+	line-height: 14px;
+	color:#3978bf;
+	font-family: georgia, sans-serif;
+	font-size: 11px;
+}
+
+a:hover {
+	text-decoration:underline;
+	line-height: 14px;
+	color:#5aa701;
+	font-family: georgia, sans-serif;
+	font-size: 11px;
+	cursor: crosshair;
+}
+
+.glowna {
+left:41px; 
+top:130px; 
+position: absolute;
+}
+
+
+.regulamin {
+left:184px; 
+top:130px; 
+position: absolute;
+}
+
+.profil {
+left:327px; 
+top:130px; 
+position: absolute;
+}
+
+#dane_osobowe td, #wyksztalcenie td, #doswiadczenie td, #jezyki td, #dodatkowe td{
+font-size:15px;
+line-height:20px;
+	font-family: "bookman old style";
+}
+
+
+
+.top ul, .top ul li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.top ul {
+	position: absolute;
+}
+
+.top ul li {
+	float: left;
+	border: 0px #a3ff35;
+}
+
+.top ul a:link, .top ul a:visited {
+	text-decoration: none;
+	display: block;
+	width: 140px;
+	height: 43px;
+	text-align: center;
+	padding: 10px 0;
+	font-weight: bold;
+	background-color: #88fb00 url('img/ehe.jpg');
+	color: #346401;
+	border-top: 0px solid #a3ff35;
+}
+
+.top ul a:hover {
+	text-decoration: none;
+	display: block;
+	width: 140px;
+	height: 33px;
+	text-align: center;
+	padding: 5px 0;
+	font-weight: bold;
+	background-color: #88fb00;
+	background-image: url('img/hover.jpg');
+	color: #346401;
+	border-top: 20px solid #6e6b64;
+}
+
+img {
+	border: 0px;
+}
+
+.top {
+	height: 175px;
+	width: 1020px;
+	text-align: justify;
+	padding: 0px;
+	background:#ffffff url('img/head2.jpg');
+}
+
+.featured {
+	height: 450px;
+	width: 1020px;
+	text-align: justify;
+	padding: 0px;
+	background:#ffffff url('img/oglo.jpg');
+}
+
+.content {
+	width: 1020px;
+	text-align: justify;
+		padding-top:25px;
+	padding-bottom: 400px;
+	background:#ffffff url('img/02.jpg');
+}
+
+.ending {
+	height: 71px;
+	width: 1020px;
+	text-align: left;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	background: #ffffff url('img/stopka.jpg');
+}
+
+#log {
+	height: 41px;
+	width: 463px;
+	position: absolute;
+	top: 132px;
+	left:515px;
+	background: url('img/login.jpg') no-repeat;
+}
+
+#log2 {
+	height: 41px;
+	width: 463px;
+	position: absolute;
+	top: 127px;
+	left:515px;
+}
+
+#login_log  {
+	position:absolute;
+	top: 5px;
+	left: 42px;
+	width:165px;
+	background-color: transparent;
+	border:0px;
+}
+
+#haslo_log  {
+	position:absolute;
+	top: 5px;
+	left:263px;
+	width:165px;
+	background-color: transparent;
+	border:0px;
+}
+
+#submit {
+	position: absolute;
+	top: 5px;
+	left:437px;
+	background-color: transparent;
+	border:0px;
+}
+
+#submit:hover {
+	cursor: pointer;
+}
+
+#regulamin h3 {
+	font-family:inherit;
+}
+
+#regulamin  {
+	padding:10px 0 10px 5px;
+}
+
+#regulamin li {
+	margin-top:5px;
+}
+
+.error {
+	color:#c21010;
+}
+
+#log .error {
+	position:absolute;
+	top:15px;
+	left:7px;
+}
+
+.ok {
+    text-align:right;
+    padding-right:5px;
+    color:inherit;
+    font-weight:bold;
+
+}
+
+.ok a:hover{
+	font-weight:bolder;
+	text-decoration:none;
+	color:#346401;
+}
+
+.ok a {
+	color:#0b0f68;
+	font-weight:normal;
+}
+
+#rejestracja {
+	font-size:120%;
+	text-align:right;
+	margin: 30px 30px 20px 10px;
+}
+
+#rejestracja label {
+	text-align:right;
+	margin-right: 15px;
+}
+
+#rejestracja input[type="text"] , #rejestracja input[type="password"]  {
+	width:300px;
+	height:20px;
+	margin-top:10px;
+	color: #000000;
+	border: 0px;
+        background: #82ED01 url('img/input.jpg');
+	font-family: "small fonts";
+}
+
+#rejestracja input[type="radio"] {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+submit, input, textarea, radio {
+    outline-style:none;
+}
+
+legend {
+	font-weight:bold;
+}
+#cv_edit label {
+  float :left;
+  width:120px;
+}
+
+
+#cv_edit #jezyki label {
+  float :right;
+  width:200px;
+}
+#cv_edit label[for="od"], #cv_edit label[for="do"], #cv_edit label[for="gdzie"]{
+   width:120px;
+   float:left;
+
+}
+
+input[id="dodatk"] {
+	width:870px;
+}
+
+#zmien_haslo_div label{
+   width:120px;
+   float:left;
+
+}
+#ok{
+float:right;
+}
+#cv {
+	font-family: sans-serif;
+	background: #ffffff url('img/list.jpg');
+	margin:15px 30px 15px 30px;
+	padding:30px 30px 20px 30px;
+	border-style: outset;
+	border-color: #bda561;
+}
+
+#cv h3 {
+	text-align:center;
+	font-size:200%;
+}
+
+#cv img {
+	height:100px;
+	width:100px;
+	margin-right:10px;
+        margin-top:15px;
+}
+
+#cv h4 {
+	font-size:20px;
+	color:#f5e7ca;
+	border-bottom:1px solid #626262;
+	background-image: url('img/tlo.png');
+}
+
+#cv  table {
+	width:100%;
+}
+
+#dane_osobowe table {
+	width:100%;
+}
+
+input[id="wykszt_gdzie"] , input[id="dosw_gdzie"] {
+	width:550px;
+}
+
+
+.oglo1 {
+	position:absolute;
+	top:285px;
+	left: 155px;
+        width:130px;
+}
+
+.oglo2 {
+	position:absolute;
+	top:285px;
+	left: 440px;
+        width:130px;
+        color:#464034;
+}
+
+.oglo3 {
+	position:absolute;
+	top:285px;
+	left: 735px;
+        width:130px;
+}
+
+.obrocone {
+	display:block;
+	position:absolute;
+	-webkit-transform: rotate(-12deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-45deg);
+}
