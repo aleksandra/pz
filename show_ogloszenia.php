@@ -37,10 +37,10 @@ if (isset($_SESSION['id_obecne'])) {
            <b> <?php echo $tresc; ?></b><br/>
             <br/>
             <?php if (!$row2 = mysqli_fetch_array($result2)) {?>
-            <a href="aplikuj.php?id=<?php echo $id; ?>" >Aplikuj</a>
+            <a href="aplikuj.php?id=<?php echo $id; ?>" onclick="sprawdz(event, this,'')">Aplikuj</a>
             <?php }
             else {?>
-                Aplikowałeś na to ogłoszenie. | <a href="rezygnuj.php?id=<?php echo $id; ?>" >Rezygnuj</a>
+                Aplikowałeś na to ogłoszenie. | <a href="rezygnuj.php?id=<?php echo $id; ?>" onclick="sprawdz(event,this,'')">Rezygnuj</a>
         
 
                 <?php }

@@ -22,41 +22,31 @@ session_start();
 			
 			 <td CLASS="content" STYLE="padding-right: 44px; padding-left: 44px">
 
-<br/>
+                        <br/>
 			<br/>
 			 <?php //jezeli zalogowany
 				if (isset($_SESSION['id_obecne'])) {
                                     if ($_SESSION['typ'] == 'f') {
-                                     
-                                        require_once('ogloszenia.php');
-                                        
+                                        require_once('ogloszenia.php');                
                                     }
                                     else {
                                         require_once('show_ogloszenia.php');
                                     }
 			?>
 			
-			<div>
-
-
-                     
-                        </div>
 			<?php
 				}
 				else {
 				//rejestracja jezeli jeszcze nie zalogowany
-				
-			?>
+				?>
 			<div id="rejestracja">
-			<?php 
-					
-			?>
+		
 			Nie masz jeszcze konta? Zarejestruj się.
-			<form method="post" action="add.php">
+                         <p class="error"><?php echo $_SESSION['error']; $_SESSION['error']=""; ?></p>
+			<form method="post" action="add.php" onSubmit="return wal_rej(this)">
 			<input type="radio" name="typ" id="pracownik" value="p" <?php if($_SESSION['typ'] != 'f') { echo 'checked="checked"'; } ?> />Szukasz pracy
 			<input type="radio" name="typ" id="firma" value="f" <?php if($_SESSION['typ'] == 'f') {echo 'checked="checked"';} ?>/>Szukasz pracowników
 			<br/>
-			 <?php echo '<p class="error">'. $_SESSION['error'].'</p>'; ?>
 			<label for="login"> Login  </label>
 			<input type="text" id="login" name="login" value="<?php echo $_SESSION['login']; ?>" /><br/>
 			<label for="haslo"> Hasło </label>
@@ -79,9 +69,7 @@ session_start();
 			</form>
 			
 			<?php 
-					} //koniec rejestracji
-					
-				
+					} //koniec rejestracji	
 			?>
 			</div>
 			</td>

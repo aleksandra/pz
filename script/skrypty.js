@@ -85,8 +85,61 @@ $(document).ready(function() {
 
 });
 
+function wal_rej(arg) {
+    var err = 0;
+    imie_reg = /^[A-ZŁŻŹ][a-ząęćółńś]+/;
+    nazwisko_reg = /^[A-ZŁŻŹĘÓĄŚŃĆ][a-ząęćółńś]+(-?[A-ZŁŻŹĘÓĄŚŃĆ][a-ząęćółńś]+)*$/;
+    email_reg = /^[a-zA-Z0-9ąćęłńóśżźĄĆĘŁŃÓŚŻŹ]{1,30}@[a-zA-Z0-9ąćęłńóśżźĄĆĘŁŃÓŚŻŹ]+(\.[a-zA-Z0-9ąćęłńóśżźĄĆĘŁŃÓŚŻŹ]+)+$/;
+    $('.error').remove();
+    with (arg) {
+		if ( login.value == "" || haslo.value == "" || haslo2.value == "" || email.value == ""  ) {
+                     $('<p class="error">Wypełnij wszystkie pola!</p>').insertBefore(arg);
+                     err++;
+                }
+                else if (firma.checked && nazwa_firmy.value == "" ) {
+                      $('<p class="error">Wypełnij wszystkie pola!</p>').insertBefore(arg);
+                     err++;
+                }
+                else if (pracownik.checked) {
+                        if ( !imie.value.match(imie_reg) ) {
+                            $('<p class="error">Niepoprawne imię!</p>').insertBefore(arg);
+                            err++;
+                        }
+                        if ( !nazwisko.value.match(nazwisko_reg)) {
+                           $('<p class="error">Niepoprawne nazwisko!</p>').insertBefore(arg);
+                            err++;
+                        }
+                }
+                if (haslo.value.length < 5) {
+                    $('<p class="error">Hasło musi mieć conajmniej 5 znaków.</p>').insertBefore(arg);
+                     err++;
+                }
+                if (haslo.value != haslo2.value) {
+                    $('<p class="error">Musisz wpisać to samo hasło dwa razy.</p>').insertBefore(arg);
+                     err++;
+                }
+                if (!email.value.match(email_reg)) {
+                     $('<p class="error">Niepoprawny email.</p>').insertBefore(arg);
+                     err++;
+                }
+    }
+    if (err == 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 function odpowiedzi(id){
 	$('#odpowiedzi'+id+'_div').slideToggle('slow');
+}
+
+function sprawdz(e,a, msg) {
+    if(e)e.preventDefault();
+    else window.event.returnValue=false;
+    if(window.confirm('Napewno?'+msg)) window.location=a.href;
 }
 
 function dodaj_enter(kontener){

@@ -25,7 +25,7 @@ session_start();
 	
 	<div id="cv_edit">
 		<img src="img/cv.jpg"><br /><br />
-		<?php// echo $_SESSION['msg_cv']; $_SESSION['msg_cv'] = '';?>
+		<?php echo $_SESSION['msg_cv']; $_SESSION['msg_cv'] = '';?>
 		<form enctype="multipart/form-data" method="POST" action="create_cv.php" >
                         <!-- DANE OSOBOWE -->
 			<fieldset>
@@ -270,7 +270,7 @@ session_start();
 			</form>
 	<br/>
 	</div>	<br /><br /><center>
-	<a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>"><img src="img/show.jpg" border="0"></a>
+	<a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>" onclick="sprawdz(event,this,' Stracisz wprowadzone zmiany. ')"><img src="img/show.jpg" border="0"></a>
 	<?php
 			}
 			else echo 'Nie możesz tu być, wracaj do siebie!';

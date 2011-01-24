@@ -1,12 +1,14 @@
 ﻿Obecny stan projektu.
 
 Do zrobienia:
-	- profil firmy
 	- paginacja ogłoszeń
 	- rejestracja potwierdzana mailem
 	- format wyświetlania ogłoszeń
-	- potwierdzenie usuwania, aplikowania, rezygnowania
+        - format wyświetlania wizytowki firmy, edycji wizytowki
 	- walidacja w3c
-	- walidacja przy rejestracji, przy tworzeniu/edycji cv, przy tworzeniu/edycji profilu firmy
-	- poprawić rejestrację
+	- walidacja przy tworzeniu/edycji cv, przy tworzeniu/edycji profilu firmy
 	
+Zrobione:
+        - profil firmy
+        - potwierdzenie usuwania, aplikowania, rezygnowania
+        - walidacja przy rejestracji

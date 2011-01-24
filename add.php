@@ -48,11 +48,12 @@
 					$_SESSION['do_wyswietlenia'] = $imie .' '. $nazwisko . $nazwa_firmy;
 					$_SESSION['ok'] = 'Utworzenie profilu powiodło się.  ';
 						$_SESSION['id_obecne'] = $id;
+                                                $_SESSION['typ'] = $typ;
 						$home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
 						header('Location: '.$home_url);
 				}
 				else {
-					$_SESSION['error'] = "Musisz podać wszystkie dane";
+					$_SESSION['error'] = "Wypełnij wszystkie pola";
 					$_SESSION['login'] = $login;
 					$_SESSION['typ'] = $typ;
 					$_SESSION['imie'] = $imie;

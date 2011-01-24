@@ -74,7 +74,7 @@ if (isset($_SESSION['id_obecne'])) {
            
             ?>
 
-            <a href="delete_oglo.php?id=<?php echo $id; ?>" >Usuń</a> | <a onclick='odpowiedzi("<?php echo $id; ?>")'> Odpowiedzi(<?php echo $ile;?> ) </a>
+            <a href="delete_oglo.php?id=<?php echo $id; ?>" onclick="sprawdz(event,this,'')" >Usuń</a> | <a onclick='odpowiedzi("<?php echo $id; ?>")'> Odpowiedzi(<?php echo $ile;?> ) </a>
 
             <?php if ( $ile > 0 ) { ?>
             <div id="odpowiedzi<?php echo $id; ?>_div" style="display:none">
