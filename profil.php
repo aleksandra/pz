@@ -100,10 +100,11 @@ require_once('header.php');
                 <div id="ogloszenia_div" style="display:none" >
                         <b>Twoje ogłoszenia:</b>
                         <?php
-                            $query2 = "SELECT * FROM  branza, firma, ogloszenie, odp WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id AND odp.pracownik_id='$id_obecne' AND ogloszenie.id= odp.ogl_id ORDER BY dodano DESC ";
+                            $query2 = "SELECT *,firma.id AS firma_id FROM  branza, firma, ogloszenie, odp WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id AND odp.pracownik_id='$id_obecne' AND ogloszenie.id= odp.ogl_id ORDER BY dodano DESC ";
                             $result2 = mysqli_query($dbc, $query2);
                             $licznik = 1;
                             while ($row2 = mysqli_fetch_array($result2)) {
+                                $firma_id = $row2['firma_id'];
                                 $firma = $row2['nazwa'];
                                 $dodano = $row2['dodano'];
                                 $branza = $row2['branza_nazwa'];
@@ -114,7 +115,7 @@ require_once('header.php');
                                 $licznik++ ?></h2>
                                 Dodano: <?php echo $dodano; ?><br/>
                                 Branża: <?php echo $branza; ?><br/>
-                                Firma: <?php echo $firma; ?><br/>
+                                Firma: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a><br/>
 <?php echo $tresc; ?><br/><br/>
                                 Przesłano CV: <?php echo $odp_data;
                             } ?>

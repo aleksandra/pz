@@ -6,7 +6,7 @@ if (isset($_SESSION['id_obecne'])) {
         $id_obecne=$_SESSION['id_obecne'];
         $licznik=1;
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die ('błąd bazy');
-	$query = "SELECT * FROM  branza, firma, ogloszenie WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id ORDER BY dodano DESC ";
+	$query = "SELECT *, firma.id AS firma_id FROM  branza, firma, ogloszenie WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id ORDER BY dodano DESC ";
 	$result = mysqli_query($dbc, $query);
     
         echo  $_SESSION['msg_aplikuj']; $_SESSION['msg_aplikuj']="";
@@ -16,7 +16,8 @@ if (isset($_SESSION['id_obecne'])) {
         $trzy_pierwsze=3;
         $ktore=1;
         while ($trzy_pierwsze  && $row = mysqli_fetch_array($result)) {
-        
+
+        $firma_id = $row['firma_id'];
         $id = $row['id'];
 	$branza = $row['branza_nazwa'];
         $dodano = $row['dodano'];
@@ -33,7 +34,7 @@ if (isset($_SESSION['id_obecne'])) {
             <h2>Ogłoszenie <?php echo $licznik; $licznik++?></h2>
             Dodano: <?php echo $dodano; ?><br/>
             Branża: <?php echo $branza; ?><br/>
-            Dodane przez: <?php echo $firma; ?><br/>
+            Dodane przez: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a><br/>
            <b> <?php echo $tresc; ?></b><br/>
             <br/>
             <?php if (!$row2 = mysqli_fetch_array($result2)) {?>
@@ -70,7 +71,7 @@ if (isset($_SESSION['id_obecne'])) {
             <h2>Ogłoszenie <?php echo $licznik; $licznik++?></h2>
             Dodano: <?php echo $dodano; ?><br/>
             Branża: <?php echo $branza; ?><br/>
-            Dodane przez: <?php echo $firma; ?><br/>
+            Dodane przez: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a><br/>
             <b> <?php echo $tresc; ?></b><br/>
            
             <?php if (!$row2 = mysqli_fetch_array($result2)) {?>
