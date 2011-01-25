@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 25 Sty 2011, 15:15
+-- Czas wygenerowania: 25 Sty 2011, 22:49
 -- Wersja serwera: 5.1.41
 -- Wersja PHP: 5.3.1
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `dane` (
   `aktywacja` int(11) NOT NULL DEFAULT '0',
   `klucz` varchar(5) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=51 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=59 ;
 
 --
 -- Zrzut danych tabeli `dane`
@@ -69,7 +69,8 @@ INSERT INTO `dane` (`id`, `login`, `haslo`, `typ`, `aktywacja`, `klucz`) VALUES
 (38, 'firma', '9841bfecf0955a4b53640f66d15042e11726c8ab', 'f', 1, ''),
 (39, 'ala', 'c6a378510e0ec1d7809694ebf1d5579f37b1642e', 'p', 1, ''),
 (49, 'z', '395df8f7c51f007019cb30201c49e884b46b92fa', 'p', 0, ''),
-(50, 'p', '7ed324d086550f729f49599c5d6250911b68dafb', 'p', 0, '');
+(50, 'p', '7ed324d086550f729f49599c5d6250911b68dafb', 'p', 0, ''),
+(58, 'q', 'c6efae9869218c6d45b92a3090bce129f27c070d', 'p', 1, '64365');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ INSERT INTO `dodatkowe` (`id`, `pracownik_id`, `nazwa`) VALUES
 (1, 1, ''),
 (4, 1, 'cocococo'),
 (3, 1, 'prawo jazdy kat. B'),
-(2, 1, '');
+(2, 1, 'zzz');
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `jezyki` (
 
 INSERT INTO `jezyki` (`pracownik_id`, `jezyk_id`, `poziom_id`) VALUES
 (1, 5, 4),
-(1, 1, 3);
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -209,7 +210,7 @@ INSERT INTO `jezyki_poziom` (`id`, `nazwa`) VALUES
 (2, 'biegle'),
 (3, 'komunikatywnie'),
 (4, 'podstawy'),
-(1, ' brak');
+(1, 'brak');
 
 -- --------------------------------------------------------
 
@@ -248,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `ogloszenie` (
   `tresc` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `dodano` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=86 ;
 
 --
 -- Zrzut danych tabeli `ogloszenie`
@@ -274,21 +275,25 @@ INSERT INTO `ogloszenie` (`id`, `id_firmy`, `branza_id`, `tresc`, `dodano`) VALU
 (56, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:35'),
 (55, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:31'),
 (54, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:31'),
-(68, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:05'),
-(67, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:02'),
-(69, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:05'),
-(70, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:33'),
-(71, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:33'),
-(72, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:35'),
-(73, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:35'),
-(74, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:37'),
-(75, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:37'),
-(76, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:40'),
-(77, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:40'),
+(68, 36, 5, 'PoszukujÄ™ 3 pracownika.11', '2011-01-25 14:44:05'),
+(67, 38, 5, 'PoszukujÄ™ 3 pracownika.10', '2011-01-25 14:44:02'),
+(69, 38, 5, 'PoszukujÄ™ 3 pracownika.999', '2011-01-25 14:44:05'),
+(70, 36, 5, 'PoszukujÄ™  pracownika.888', '2011-01-25 14:44:33'),
+(71, 38, 5, 'PoszukujÄ™  pracownika.777', '2011-01-25 14:44:33'),
+(72, 36, 5, 'PoszukujÄ™  pracownika.666', '2011-01-25 14:44:35'),
+(73, 38, 5, 'PoszukujÄ™  pracownika.555', '2011-01-25 14:44:35'),
+(74, 36, 5, 'PoszukujÄ™  pracownika.444', '2011-01-25 14:44:37'),
+(75, 38, 5, 'PoszukujÄ™  pracownika.333', '2011-01-25 14:44:37'),
+(76, 36, 5, 'PoszukujÄ™  pracownika.22', '2011-01-25 14:44:40'),
+(77, 38, 5, 'PoszukujÄ™  pracownika.111', '2011-01-25 14:44:40'),
 (78, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:42'),
 (79, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:42'),
 (80, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:57'),
-(81, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:57');
+(81, 38, 5, 'PoszukujÄ™  pracownika.pierwsze', '2011-01-25 14:44:57'),
+(82, 38, 5, 'praca w ameryce.', '2011-01-25 22:16:32'),
+(83, 38, 5, 'super praca', '2011-01-25 22:16:32'),
+(84, 38, 5, 'praca w ameryce.', '2011-01-25 22:16:36'),
+(85, 38, 5, 'super praca', '2011-01-25 22:16:36');
 
 -- --------------------------------------------------------
 
@@ -319,8 +324,16 @@ INSERT INTO `pracownik` (`id`, `imie`, `nazwisko`, `email`, `dolaczyl`, `data_ur
 (1, 'Aleksandra Joanna', 'Bucior', 'ooleczka@o2.pl', '2010-12-02 22:37:12', '1988-08-18', 'Wejherowo', '505933178', '', 'panna', 'zdjecia/1295463004ja.jpg'),
 (37, 'a', 'a', 'a', '2010-12-04 13:31:13', NULL, NULL, NULL, NULL, NULL, NULL),
 (39, 'ala', 'ala', 'ala@ala.pl', '2011-01-18 00:22:16', NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:16:25', NULL, NULL, NULL, NULL, NULL, NULL),
 (50, 'Pola', 'Bucio', 'ala@ala.pl', '2011-01-25 02:27:25', NULL, NULL, NULL, NULL, NULL, NULL),
-(49, 'z', 'z', 'z', '2011-01-23 21:22:11', NULL, NULL, NULL, NULL, NULL, NULL);
+(49, 'z', 'z', 'z', '2011-01-23 21:22:11', NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:18:05', NULL, NULL, NULL, NULL, NULL, NULL),
+(53, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:21:23', NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:31:17', NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:38:05', NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:48:51', NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:50:54', NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2011-01-25 20:54:53', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

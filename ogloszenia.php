@@ -4,6 +4,15 @@
 if (isset($_SESSION['id_obecne'])) {
     if( $_SESSION['typ'] == 'f') {
        $id_obecne=$_SESSION['id_obecne'];
+       if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+       $ile_na_strone = 5;
+       $poczatek = ($page-1)*$ile_na_strone;
+       $licznik=($page-1)*$ile_na_strone +1;
+       
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die ('błąd bazy');
 	
         ?>
@@ -42,9 +51,11 @@ if (isset($_SESSION['id_obecne'])) {
 		echo $_SESSION['git_add_oglo'];
 		$_SESSION['git_add_oglo'] = "";
 
-           $query = "SELECT * FROM ogloszenie,branza WHERE id_firmy = '$id_obecne' AND ogloszenie.branza_id = branza.branza_id ORDER BY dodano DESC ";
+       
+
+           $query = "SELECT * FROM ogloszenie,branza WHERE id_firmy = '$id_obecne' AND ogloszenie.branza_id = branza.branza_id ORDER BY dodano DESC LIMIT $poczatek , $ile_na_strone ";
 	$result = mysqli_query($dbc, $query);
-	$licznik=1;
+	
                 ?>
         <h1> Twoje ogłoszenia: </h1>
         <div id="oglo_lista">
@@ -101,11 +112,35 @@ if (isset($_SESSION['id_obecne'])) {
             </div>
             <?php } ?>
         <?php
-         } ?>
+         }
+
+        // $query = "SELECT COUNT(*) FROM ogloszenie WHERE id_firmy = '$id_obecne'";
+         //$result = mysqli_query($dbc, $query);
+        // $row = mysqli_fetch_array($result);
+        // $ilosc_ogolem = $row['COUNT(*)'];
+        // $ile_stron = round(($ilosc_ogolem/10), 0, PHP_ROUND_HALF_UP);
+
+
+         ?>
             
-         </div><?php
-         if ($licznik == 1) {
+         </div><br/><br/><?php
+
+        $query = "SELECT COUNT(*) FROM ogloszenie WHERE id_firmy = '$id_obecne'";
+        $result = mysqli_query($dbc, $query);
+        $row = mysqli_fetch_array($result);
+        $ilosc_ogolem = $row['COUNT(*)'];
+        $ile_stron = ceil($ilosc_ogolem/$ile_na_strone);
+
+         if ($ilosc_ogolem == 0) {
             ?>Narazie brak.<?php
+         }
+         else {echo 'Strona:';
+            for ($i=1;$i<=$ile_stron;$i++) {
+
+             ?>
+            <a href="index.php?page=<?php echo $i ?>" ><?php echo $i; ?></a>
+            <?php
+            }
          }
     }
 }

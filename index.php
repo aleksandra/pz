@@ -27,7 +27,11 @@ session_start();
 			 <?php //jezeli zalogowany
 				if (isset($_SESSION['id_obecne'])) {
                                     if ($_SESSION['typ'] == 'f') {
-                                        require_once('ogloszenia.php');                
+
+                                       
+                                        require_once('ogloszenia.php');
+
+
                                     }
                                     else {
                                         require_once('show_ogloszenia.php');
