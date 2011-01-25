@@ -26,8 +26,9 @@
 			
 				//sprawdza czy wszystkie pola sa wypelnione
 				if(!empty($login) && !empty($haslo) && !empty($haslo2) && ( ( !empty($imie) && !empty($nazwisko) ) || (!empty($nazwa_firmy)) ) && !empty($email) &&  $haslo == $haslo2) {
-					//dodaje 	
-					$query = "INSERT INTO dane (login, haslo,typ) VALUES ('$login', SHA('$haslo'), '$typ')";	
+					//dodaje
+                                        $klucz = rand(10000,99999);
+					$query = "INSERT INTO dane (login, haslo,typ, klucz) VALUES ('$login', SHA('$haslo'), '$typ', '$klucz')";
 					$result = mysqli_query($dbc, $query) or die('Nie udało się utworzyć profilu, spróbuj później<br/>');
 					
 					$query = "SELECT id FROM dane WHERE login='$login'";
@@ -47,8 +48,16 @@
 					$_SESSION['error']='';
 					$_SESSION['do_wyswietlenia'] = $imie .' '. $nazwisko . $nazwa_firmy;
 					$_SESSION['ok'] = 'Utworzenie profilu powiodło się.  ';
-						$_SESSION['id_obecne'] = $id;
-                                                $_SESSION['typ'] = $typ;
+						//$_SESSION['id_obecne'] = $id;
+                                                //$_SESSION['typ'] = $typ;
+
+                                               
+                                                $link = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/aktywacja.php?id='.$id.'&key='.$klucz;
+                                                 $msg = 'Kliknij w link, aby aktywować swoje konto w serwisie ePortal<br/><a href="'.$link.'">'.$link.'</a>';
+                                                $_SESSION['link'] = $msg;
+                                                $from = 'From: ola@efirma.pl';
+                                                mail($email, 'Aktywacja konta.', $msg, $from );
+
 						$home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
 						header('Location: '.$home_url);
 				}

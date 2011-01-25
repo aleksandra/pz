@@ -13,14 +13,19 @@
 			$user_username = mysqli_real_escape_string($dbc, trim($_POST['login_log']));
 			$user_password = mysqli_real_escape_string($dbc, trim($_POST['haslo_log']));
 
+
+    
 			if (!empty($user_username) && !empty($user_password) ) {
 				// Wyszukiwanie nazwy i hasła w bazie.
-				$query = "SELECT login, id, typ FROM dane WHERE login = '$user_username' AND haslo = SHA('$user_password')";
+				$query = "SELECT login, id, typ, aktywacja FROM dane WHERE login = '$user_username' AND haslo = SHA('$user_password')";
 				$data = mysqli_query($dbc, $query);
 
 				if (mysqli_num_rows($data) == 1) {
+
+                                    //
 					// Dane są poprawne, dlatego można przypisać identyfikator i nazwę użytkownika do zmiennych.
 					$row = mysqli_fetch_array($data);
+                                 if ($row['aktywacja'] == 1) {
 					session_regenerate_id();
 					$id = $row['id'];
 					$_SESSION['id_obecne'] =  $id;
@@ -41,7 +46,14 @@
 					
 					$home_url = $_SERVER['HTTP_REFERER'];
 					header('Location: '.$home_url);
-				}
+				
+      }
+    else {
+        $_SESSION['msg'] = "Twoje konto nie zostało aktywowane. Sprawdź swoją skrzynkę mailową";
+        $home_url = $_SERVER['HTTP_REFERER'];
+					header('Location: '.$home_url);
+    }
+                                }
 				else {
 					// Para nazwa - hasło jest nieprawidłowa, 
 					$_SESSION['login_tmp'] =  $user_username;
@@ -57,6 +69,7 @@
 				$home_url = $_SERVER['HTTP_REFERER'];
 				header('Location: '.$home_url);
 			}
+    
 		}
 		//jeżeli wszedl nie poprzez submit
 		else {

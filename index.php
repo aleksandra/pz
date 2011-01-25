@@ -38,8 +38,10 @@ session_start();
 				}
 				else {
 				//rejestracja jezeli jeszcze nie zalogowany
-				?>
-			<div id="rejestracja">
+			echo $_SESSION['link']; $_SESSION['link']=""; echo $_SESSION['aktywacja']; $_SESSION['aktywacja']="";
+                               ?>
+
+                        <div id="rejestracja">
 		
 			Nie masz jeszcze konta? Zarejestruj się.
                          <p class="error"><?php echo $_SESSION['error']; $_SESSION['error']=""; ?></p>
