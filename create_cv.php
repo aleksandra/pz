@@ -46,7 +46,7 @@ if (isset($_SESSION['id_obecne'])) {
         else {
             $query = "UPDATE wyksztalcenie SET od = '$od', do = '$do', gdzie = '$gdzie' WHERE id_pracownika = '$id_obecne' AND id = '$i'";
        }
-        $result = mysqli_query($dbc, $query) or die('blad');
+        $result = mysqli_query($dbc, $query) or die('blad w');
         $i++;
     }
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['id_obecne'])) {
         else {
             $query = "UPDATE doswiadczenie SET od = '$od', do = '$do', gdzie = '$gdzie' WHERE id_pracownika = '$id_obecne' AND id = '$i'";
        }
-        $result = mysqli_query($dbc, $query) or die('blad');
+        $result = mysqli_query($dbc, $query) or die('blad d');
         $i++;
     }
 
@@ -83,6 +83,8 @@ if (isset($_SESSION['id_obecne'])) {
         while($ile) {
             $id_jezyka = $i; 
             $poziom = $_POST["$i"]; 
+            $gotowe=0;
+
 
             $query = "SELECT * FROM jezyki WHERE pracownik_id = '$id_obecne' ";
             $dane = mysqli_query($dbc, $query);
@@ -106,7 +108,7 @@ if (isset($_SESSION['id_obecne'])) {
                
         
         
-        $result = mysqli_query($dbc, $query) or die('blad');
+        $result = mysqli_query($dbc, $query) or die('blad j');
         $ile--; $i++;
     }
 
@@ -127,9 +129,9 @@ if (isset($_SESSION['id_obecne'])) {
             $query = "INSERT INTO dodatkowe (id, pracownik_id, nazwa) VALUES ('$i', '$id_obecne', '$nazwa')";
         }
         else {
-            $query = "UPDATE dodatkowe SET nazwa = '$nazwa' WHERE id_pracownika = '$id_obecne' AND id = '$i'";
+            $query = "UPDATE dodatkowe SET nazwa = '$nazwa' WHERE pracownik_id = '$id_obecne' AND id = '$i'";
        }
-        $result = mysqli_query($dbc, $query) or die('blad');
+        $result = mysqli_query($dbc, $query) or die('blad dod');
         $i++;
     }
 

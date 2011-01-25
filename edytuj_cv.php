@@ -26,7 +26,7 @@ session_start();
 	<div id="cv_edit">
 		<img src="img/cv.jpg"><br /><br />
 		<?php echo $_SESSION['msg_cv']; $_SESSION['msg_cv'] = '';?>
-		<form enctype="multipart/form-data" method="POST" action="create_cv.php" >
+		<form enctype="multipart/form-data" method="POST" action="create_cv.php" onSubmit="return wal_cv(this)" >
                         <!-- DANE OSOBOWE -->
 			<fieldset>
 			<fieldset style=" float:right">
@@ -76,38 +76,38 @@ session_start();
 					}
                                         $i++;
 				?>
-				<input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" />
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" />
+				<input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);" />
 				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
 			</div>
                         <a id="dodatk_wykszt1">Jeszcze jedno</a>
                         <?php $i++; ?>
 			<div id="dodatk_wykszt1_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" />
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" />
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt2">Jeszcze jedno</a>
                            </div>
                          <?php $i++; ?>
 			<div id="dodatk_wykszt2_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" />
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" />
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt3">Jeszcze jedno</a>
                            </div>
 
                         <?php $i++; ?>
 			<div id="dodatk_wykszt3_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" />
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" />
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt4">Jeszcze jedno</a>
                            </div>
 
                          <?php $i++; ?>
 			<div id="dodatk_wykszt4_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" />
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" />
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
                                 
                            </div>
@@ -135,39 +135,39 @@ session_start();
 					}
                                         $i++;
 				?>
-                                <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" />
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" />
+                                <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
 			</div>
 
                         <a id="dodatk_dosw1">Jeszcze jedno</a>
                         <?php $i++; ?>
 			<div id="dodatk_dosw1_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" />
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" />
+                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw2">Jeszcze jedno</a>
                            </div>
                          <?php $i++; ?>
 			<div id="dodatk_dosw2_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" />
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" />
+                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw3">Jeszcze jedno</a>
                            </div>
 
                         <?php $i++; ?>
 			<div id="dodatk_dosw3_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" />
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" />
+                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw4">Jeszcze jedno</a>
                            </div>
 
                          <?php $i++; ?>
 			<div id="dodatk_dosw4_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" />
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" />
+                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
 				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
 
                            </div>

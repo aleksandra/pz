@@ -32,7 +32,7 @@
 				$_SESSION['pokaz'] =  1;
                                 $_SESSION['branza'] =  $branza;
                                 $_SESSION['tresc'] = $tresc;
-				$_SESSION['err_add_oglo'] = "<p class='error'>Musisz podać branżę i treść ogłoszenia.</p>";
+				$_SESSION['err_add_oglo'] = "<p class='error'>No i po co Ci ogłoszenie bez <b>treści</b></p>";
 				$home_url = $_SERVER['HTTP_REFERER'].'#add_oglo';
 				header('Location: '.$home_url);
                         }

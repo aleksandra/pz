@@ -1,4 +1,4 @@
-﻿Obecny stan projektu.
+Obecny stan projektu.
 
 Do zrobienia:
 	- paginacja ogłoszeń
@@ -6,9 +6,9 @@ Do zrobienia:
 	- format wyświetlania ogłoszeń
         - format wyświetlania wizytowki firmy, edycji wizytowki
 	- walidacja w3c
-	- walidacja przy tworzeniu/edycji cv, przy tworzeniu/edycji profilu firmy
+	- cv: wyksztalcenie,doswiadczenie, dodatkowe
 	
 Zrobione:
         - profil firmy
         - potwierdzenie usuwania, aplikowania, rezygnowania
-        - walidacja przy rejestracji
+        - walidacja przy rejestracji, przy tworzeniu/edycji profilu firmy, przy tworzeniu/edycji cv

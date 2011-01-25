@@ -14,7 +14,7 @@ if (isset($_SESSION['id_obecne'])) {
 		echo $_SESSION['err_add_oglo'];
 		$_SESSION['err_add_oglo'] = "";
 	   ?>
-           <form method="post" action="add_oglo.php">
+           <form method="post" action="add_oglo.php" >
               
                <label for="branza"> Branża  </label>
                <select name="branza">

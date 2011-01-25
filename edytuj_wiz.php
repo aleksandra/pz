@@ -20,7 +20,7 @@ session_start();
     <div id="wiz_edit">
     <br /><br />
 	<?php echo $_SESSION['msg_wiz']; $_SESSION['msg_cv'] = '';?>
-	<form enctype="multipart/form-data" method="POST" action="create_wiz.php" >
+	<form enctype="multipart/form-data" method="POST" action="create_wiz.php" onSubmit="return wal_wiz(this)" >
             <fieldset>
 
 		<legend>Dane firmy</legend>
