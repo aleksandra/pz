@@ -47,12 +47,12 @@ require_once('header.php');
         $email = $row['email'];
         $dolaczyl = $row['dolaczyl'];
         ?>
-        <div class="profil2" ><table border="0"><tr><td>
+        <div class="profil2" ><table ><tr><td>
         <?php if ($_SESSION['typ'] == 'f') {
  ?>
 
                             <img src="img/panel2.jpg" alt="panel firmy"><br />
-                            <a id="zmien_haslo"> <img src="img/haslo.jpg" alt="zmien hasło"> </a><br />
+                            <a id="zmien_haslo_wypisz"> <img src="img/haslo.jpg" alt="zmien hasło"> </a><br />
                             <a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>" > Pokaż wizytówkę </a><br/>
                             <a href="edytuj_wiz.php"> Edytuj wizytówkę </a> <br />
 
@@ -61,7 +61,7 @@ require_once('header.php');
 
 <?php if ($_SESSION['typ'] == 'p') { ?>
                         <img src="img/panel1.jpg" alt="panel"><br />
-                        <a id="zmien_haslo"> <img src="img/haslo.jpg" alt="zmien hasło"> </a><br />
+                        <a id="zmien_haslo_wypisz"> <img src="img/haslo.jpg" alt="zmien hasło"> </a><br />
                         <a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>"> <img src="img/show2.jpg" alt="pokaż cv" > </a> <br />
                         <a href="edytuj_cv.php"> <img src="img/edit2.jpg" alt="edytuj cv"> </a> <br />
                         <a id="ogloszenia"> <img src="img/ur_oglo.jpg" alt="twoje ogłoszenia"> </a> <!--narazie nico -->
@@ -96,7 +96,7 @@ require_once('header.php');
                         </div>
                         </td></tr></table>
         </div>
-        <div class="nav" ><center>
+        <div class="nav" >
                 <div id="ogloszenia_div" style="display:none" >
                         <b>Twoje ogłoszenia:</b>
                         <?php
@@ -121,7 +121,7 @@ require_once('header.php');
                             } ?>
 
                             <br/>Narazie żadnych <br/>
-                    </div></center>
+                    </div>
 
             </div>
         </div>

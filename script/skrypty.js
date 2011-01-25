@@ -9,7 +9,7 @@ $(document).ready(function() {
 		$('#f').slideUp('slow');
 		});
 
-		$("#zmien_haslo").click(function () { 
+		$("#zmien_haslo_wypisz").click(function () {
 		$('#zmien_haslo_div').slideToggle('slow');
 		$('#ogloszenia_div').slideUp('slow');
 		});
@@ -19,7 +19,7 @@ $(document).ready(function() {
 		$('#zmien_haslo_div').slideUp('slow');
 		});
 
-                $("#add_oglo").click(function () {
+                $("#add_oglo_wypisz").click(function () {
 		$('#add_oglo_div').slideToggle('slow');
 		});
 
@@ -89,13 +89,14 @@ function czysc(AInput)
 {
     if (AInput.value == 'rrrr-mm') {
         AInput.value = '';
-
+        AInput.removeAttribute('style');
     }
     return true;
 }
 function pisz(AInput)
 {
     if (AInput.value == '') {
+        AInput.setAttribute('style', 'color:grey');
         AInput.value = 'rrrr-mm';
 
     }

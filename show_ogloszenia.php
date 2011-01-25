@@ -30,7 +30,7 @@ if (isset($_SESSION['id_obecne'])) {
         ?>
            
              <div class="oglo<?php echo $ktore; ?>">
-                 <span class="obrocone">
+                 <div class="obrocone">
             <h2>Ogłoszenie <?php echo $licznik; $licznik++?></h2>
             Dodano: <?php echo $dodano; ?><br/>
             Branża: <?php echo $branza; ?><br/>
@@ -47,7 +47,7 @@ if (isset($_SESSION['id_obecne'])) {
                 <?php }
             $trzy_pierwsze--; $ktore++;
             ?>
-            </span>
+            </div>
              </div>
              <?php
             } ?>

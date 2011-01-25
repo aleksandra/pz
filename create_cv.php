@@ -32,46 +32,69 @@ if (isset($_SESSION['id_obecne'])) {
         $dane = mysqli_query($dbc, $query);
         $i=1;
       
-        while(!empty($_POST["wykszt_gdzie$i"]) ) {
-        
-        $od = $_POST["wykszt_od$i"];
-        $do = $_POST["wykszt_do$i"];
+        while($row = mysqli_fetch_array($dane)  ) {
         $gdzie = $_POST["wykszt_gdzie$i"];
-
-        $row = mysqli_fetch_array($dane);
-        
-        if($row['id'] != $i) {
-            $query = "INSERT INTO wyksztalcenie (id, id_pracownika, od, do, gdzie) VALUES ('$i', '$id_obecne', '$od', '$do', '$gdzie')";
+        if ( $gdzie != "") {
+            $od = $_POST["wykszt_od$i"];
+            $do = $_POST["wykszt_do$i"];
         }
         else {
+            $od = "";
+            $do = "";
+        }
+        $id_wykszt = $row['id'];
+
+        //$row = mysqli_fetch_array($dane);
+        
+      //  if($row['id'] != $i) {
+      //      $query = "INSERT INTO wyksztalcenie (id, id_pracownika, od, do, gdzie) VALUES ('$i', '$id_obecne', '$od', '$do', '$gdzie')";
+      //  }
+      //  else {
             $query = "UPDATE wyksztalcenie SET od = '$od', do = '$do', gdzie = '$gdzie' WHERE id_pracownika = '$id_obecne' AND id = '$i'";
-       }
+      // }
         $result = mysqli_query($dbc, $query) or die('blad w');
         $i++;
     }
+    while (!empty($_POST["wykszt_gdzie$i"])) {
+            $od = $_POST["wykszt_od$i"];
+            $do = $_POST["wykszt_do$i"];
+            $gdzie = $_POST["wykszt_gdzie$i"];
+            $query = "INSERT INTO wyksztalcenie (id, id_pracownika, od, do, gdzie) VALUES ('$i', '$id_obecne', '$od', '$do', '$gdzie')";
+            $result = mysqli_query($dbc, $query) or die('blad dos');
+            $i++;
+        }
 
         //pobieranie danych podanych przez uzytkownika DOSWIADCZENIE
         $query = "SELECT id FROM doswiadczenie WHERE id_pracownika = '$id_obecne'";
         $dane = mysqli_query($dbc, $query);
         $i=1;
 
-        while(!empty($_POST["dosw_gdzie$i"]) ) {
+        while($row = mysqli_fetch_array($dane)  ) {
 
-        $od = $_POST["dosw_od$i"];
-        $do = $_POST["dosw_do$i"];
-        $gdzie = $_POST["dosw_gdzie$i"];
-
-        $row = mysqli_fetch_array($dane);
-
-        if($row['id'] != $i) {
-            $query = "INSERT INTO doswiadczenie (id, id_pracownika, od, do, gdzie) VALUES ('$i', '$id_obecne', '$od', '$do', '$gdzie')";
-        }
-        else {
+            $gdzie = $_POST["dosw_gdzie$i"];
+            if ( $gdzie != "") {
+                $od = $_POST["dosw_od$i"];
+                $do = $_POST["dosw_do$i"];
+            }
+            else {
+                $od = "";
+                $do = "";
+            }
+            $id_dosw = $row['id'];
+      
             $query = "UPDATE doswiadczenie SET od = '$od', do = '$do', gdzie = '$gdzie' WHERE id_pracownika = '$id_obecne' AND id = '$i'";
-       }
-        $result = mysqli_query($dbc, $query) or die('blad d');
-        $i++;
-    }
+     
+            $result = mysqli_query($dbc, $query) or die('blad d');
+            $i++;
+        }
+        while (!empty($_POST["dosw_gdzie$i"])) {
+            $od = $_POST["dosw_od$i"];
+            $do = $_POST["dosw_do$i"];
+            $gdzie = $_POST["dosw_gdzie$i"];
+            $query = "INSERT INTO doswiadczenie (id, id_pracownika, od, do, gdzie) VALUES ('$i', '$id_obecne', '$od', '$do', '$gdzie')";
+            $result = mysqli_query($dbc, $query) or die('blad dos');
+            $i++;
+        }
 
      //pobieranie danych podanych przez uzytkownika JEZYKI
         $query = "SELECT count(*) FROM jezyki_lista ";
@@ -118,22 +141,26 @@ if (isset($_SESSION['id_obecne'])) {
         $dane = mysqli_query($dbc, $query);
         $i=1;
 
-        while(!empty($_POST["dodatk$i"]) ) {
+        while( $row = mysqli_fetch_array($dane) ) {
+            $nazwa = $_POST["dodatk$i"];
 
-        $nazwa = $_POST["dodatk$i"];
-
-
-        $row = mysqli_fetch_array($dane);
-
-        if($row['id'] != $i) {
-            $query = "INSERT INTO dodatkowe (id, pracownik_id, nazwa) VALUES ('$i', '$id_obecne', '$nazwa')";
+//echo $i . $nazwa . $row['id'] . "<br/>";
+       // if($row['id'] != $i) {
+         //   $query = "INSERT INTO dodatkowe (id, pracownik_id, nazwa) VALUES ('$i', '$id_obecne', '$nazwa')";
+        //}
+        //else {
+            $id_oglo = $row['id'];
+            $query = "UPDATE dodatkowe SET nazwa = '$nazwa' WHERE pracownik_id = '$id_obecne' AND id = '$id_oglo'";
+      
+            $result = mysqli_query($dbc, $query) or die('blad dod');
+            $i++;
         }
-        else {
-            $query = "UPDATE dodatkowe SET nazwa = '$nazwa' WHERE pracownik_id = '$id_obecne' AND id = '$i'";
-       }
-        $result = mysqli_query($dbc, $query) or die('blad dod');
-        $i++;
-    }
+        while (!empty($_POST["dodatk$i"])) {
+            $nazwa = $_POST["dodatk$i"];
+            $query = "INSERT INTO dodatkowe (id, pracownik_id, nazwa) VALUES ('$i', '$id_obecne', '$nazwa')";
+            $result = mysqli_query($dbc, $query) or die('blad dod');
+            $i++;
+        }
 
 
         //pobieranie danych ponych przez uzytkownika ZDJECIE

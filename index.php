@@ -21,7 +21,7 @@ session_start();
 			<!-- koniec tablicy -->
 			
 			 <td CLASS="content" STYLE="padding-right: 44px; padding-left: 44px">
-
+                        
                         <br/>
 			<br/>
 			 <?php //jezeli zalogowany
@@ -67,11 +67,11 @@ session_start();
 			<input type="text" id="email" name="email" value="<?php echo $_SESSION['email']; ?>" /><br/>
 			<input type="submit" id="rejestruj" name="rejestruj" value="Utwórz konto" />
 			</form>
-			
+			`</div>
 			<?php 
 					} //koniec rejestracji	
 			?>
-			</div>
+			
 			</td>
 			</tr>
 			<?php 

@@ -46,7 +46,7 @@ session_start();
             <input type="submit" name="edytuj_wiz" id="edytuj_wiz" value="Edytuj" />
 	</form>
 	<br/>
-    </div><br /><br /><center>
+    </div><br /><br /><div id="pokaz_button">
 	<a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>">Pokaż wizytówkę bez wprowadzonych zmian</a>
 	<?php
 			}
@@ -60,7 +60,7 @@ session_start();
 	<?php
 		}
 		mysqli_close($dbc);
-	?></center>
+	?></div>
 </td>
 </tr>
 <?php

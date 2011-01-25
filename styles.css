@@ -6,7 +6,30 @@ body, textarea {
 }
 
 #tabela {
-	position: absolute; left:100px; top: 0px; 
+    vertical-align:center;
+	position: absolute; 
+        left:100px;
+        top: 0px;
+        width:1020px;
+}
+
+#tabela td, #tabela tr {
+    margin: 0x;
+    padding: 0px;
+}
+
+.profil2 table {
+    border:0px;
+}
+
+#ogloszenia_div, .edytuj_button, #pokaz_button {
+    text-align: center;
+}
+
+
+img {
+    text-align:right;
+    border:0px;
 }
 
 textarea, input {
@@ -274,7 +297,7 @@ legend {
 
 }
 
-input[id="dodatk"] {
+input[class="dodatk"] {
 	width:870px;
 }
 
@@ -322,7 +345,7 @@ float:right;
 	width:100%;
 }
 
-input[id="wykszt_gdzie"] , input[id="dosw_gdzie"] {
+input[class="wykszt_gdzie"] , input[class="dosw_gdzie"] {
 	width:550px;
 }
 

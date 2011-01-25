@@ -52,7 +52,7 @@ require_once('connectvars.php');
                                 <?php } ?>
                         </td>
                         <td><?php if (!empty($row['zdjecie'])) { ?>
-                            <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie" align="right"/>
+                            <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie" />
                         <?php } ?></td>
 
                     </tr>
@@ -61,7 +61,7 @@ require_once('connectvars.php');
             <br/>
         </div>
         <br /><br />
-        <center>
+        <div class="edytuj_button">
         <?php
             if ($_SESSION['id_obecne'] == $id) {
                 echo '<a href="edytuj_wiz.php">Edytuj</a>';
@@ -74,7 +74,7 @@ require_once('connectvars.php');
         <?php
      }
         ?>
-       </center> </td>
+        </div> </td>
                 </tr>
 <?php
       require_once('footer.html');

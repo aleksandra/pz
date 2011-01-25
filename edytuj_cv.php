@@ -24,17 +24,18 @@ session_start();
 	?>
 	
 	<div id="cv_edit">
-		<img src="img/cv.jpg"><br /><br />
+		<img src="img/cv.jpg" alt="cv" ><br /><br />
 		<?php echo $_SESSION['msg_cv']; $_SESSION['msg_cv'] = '';?>
 		<form enctype="multipart/form-data" method="POST" action="create_cv.php" onSubmit="return wal_cv(this)" >
                         <!-- DANE OSOBOWE -->
 			<fieldset>
+                            <legend>Dane osobowe</legend>
 			<fieldset style=" float:right">
 			<legend>Zdjęcie</legend>
 			<label for="zdjecie">Zdjęcie w formacie jpg, nie większe niż 32 kB.</label><br/>
 			<input type="file" id="zdjecie" name="zdjecie" />
 			</fieldset>
-			<legend>Dane osobowe</legend>
+			
 			<label for="imie">Imię:</label>
 			<input type="text" name="imie" id="imie" value="<?php echo $row['imie']; ?>"/><br/>
 			<label for="nazwisko">Nazwisko:</label>
@@ -59,8 +60,7 @@ session_start();
 			<fieldset>
 			<legend>Wykształcenie</legend>
 			<div id="wykszt">
-				<label for="od">Od:</label><label style="margin-left:150px;" for="do">Do:</label>
-				<label style="margin-left:150px;" for="gdzie">Szkoła:</label><br/>
+				Od:<span style="margin-left:150px;">Do:</span><span style="margin-left:150px;">Szkoła:</span><br/>
 				<?php 
 					$query = "SELECT * FROM wyksztalcenie WHERE id_pracownika = '$id_obecne'";
 					$result = mysqli_query($dbc, $query);
@@ -69,46 +69,46 @@ session_start();
                                         $i++;
 
 				?>
-				<input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="<?php echo $row['od']; ?>"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="<?php echo $row['do']; ?>"/>
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" value="<?php echo $row['gdzie']; ?>"/><br/>
+				<input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="<?php echo $row['od']; ?>"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="<?php echo $row['do']; ?>"/>
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" value="<?php echo $row['gdzie']; ?>"/><br/>
 				<?php
 					}
                                         $i++;
 				?>
-				<input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);" />
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
+				<input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);" />
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" /><br/>
 			</div>
                         <a id="dodatk_wykszt1">Jeszcze jedno</a>
                         <?php $i++; ?>
 			<div id="dodatk_wykszt1_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt2">Jeszcze jedno</a>
                            </div>
                          <?php $i++; ?>
 			<div id="dodatk_wykszt2_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt3">Jeszcze jedno</a>
                            </div>
 
                         <?php $i++; ?>
 			<div id="dodatk_wykszt3_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" /><br/>
                                 <a id="dodatk_wykszt4">Jeszcze jedno</a>
                            </div>
 
                          <?php $i++; ?>
 			<div id="dodatk_wykszt4_div" style="display:none">
-                            <input type="text" name="wykszt_od<?php echo $i; ?>" id="wykszt_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_do<?php echo $i; ?>" id="wykszt_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" id="wykszt_gdzie" /><br/>
+                            <input type="text" name="wykszt_od<?php echo $i; ?>" class="wykszt_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_do<?php echo $i; ?>" class="wykszt_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="wykszt_gdzie<?php echo $i; ?>" class="wykszt_gdzie" /><br/>
                                 
                            </div>
 			</fieldset>
@@ -116,8 +116,7 @@ session_start();
 			<fieldset>
 			<legend>Doświadczenie zawodowe</legend>
 			<div id="dosw">
-				<label for="od">Od:</label><label style="margin-left:150px;" for="do">Do:</label>
-				<label style="margin-left:150px;" for="gdzie">Firma, stanowisko:</label><br/>
+				Od:<span style="margin-left:150px;" >Do:</span><span style="margin-left:150px;" >Firma, stanowisko:</span><br/>
 				 <?php 
 					$query = "SELECT * FROM doswiadczenie WHERE id_pracownika = '$id_obecne'";
 					$result = mysqli_query($dbc, $query);
@@ -127,48 +126,48 @@ session_start();
 
 				?>
                                 
-                                <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="<?php echo $row['od']; ?>"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="<?php echo $row['do']; ?>"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" value="<?php echo $row['gdzie']; ?>"/><br/>
+                                <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="<?php echo $row['od']; ?>"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="<?php echo $row['do']; ?>"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" value="<?php echo $row['gdzie']; ?>"/><br/>
 
                         <?php
 					}
                                         $i++;
 				?>
-                                <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
+                                <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" /><br/>
 			</div>
 
                         <a id="dodatk_dosw1">Jeszcze jedno</a>
                         <?php $i++; ?>
 			<div id="dodatk_dosw1_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
+                            <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw2">Jeszcze jedno</a>
                            </div>
                          <?php $i++; ?>
 			<div id="dodatk_dosw2_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
+                            <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw3">Jeszcze jedno</a>
                            </div>
 
                         <?php $i++; ?>
 			<div id="dodatk_dosw3_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
+                            <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="rrrr-mm" style="color:grey"  onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" /><br/>
                                 <a id="dodatk_dosw4">Jeszcze jedno</a>
                            </div>
 
                          <?php $i++; ?>
 			<div id="dodatk_dosw4_div" style="display:none">
-                            <input type="text" name="dosw_od<?php echo $i; ?>" id="dosw_od" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_do<?php echo $i; ?>" id="dosw_do" value="rrrr-mm" onfocus="return czysc(this);" onblur="return pisz(this);"/>
-				<input type="text" name="dosw_gdzie<?php echo $i; ?>" id="dosw_gdzie" /><br/>
+                            <input type="text" name="dosw_od<?php echo $i; ?>" class="dosw_od" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_do<?php echo $i; ?>" class="dosw_do" value="rrrr-mm" style="color:grey" onfocus="czysc(this);" onblur="pisz(this);"/>
+				<input type="text" name="dosw_gdzie<?php echo $i; ?>" class="dosw_gdzie" /><br/>
 
                            </div>
 
@@ -189,7 +188,7 @@ session_start();
                                 $id_jezyk=$row['id'];
                                 ?>
 
-                            <p><input type="hidden" id="jezyk" name="jezyk" value="<?php echo $nazwa; ?>" />
+                            <p><input type="hidden" id="jezyk<?php echo $id_jezyk; ?>" name="jezyk" value="<?php echo $nazwa; ?>" />
                                 <?php echo '<b>'.$nazwa.'</b>';
 
                              $query2 = "SELECT * FROM jezyki_poziom ORDER BY id ";
@@ -203,8 +202,8 @@ session_start();
                                     $row3 = mysqli_fetch_array($result3) ;
 
                                      ?>
-                                <label for="<?php echo $nazwa; ?>">
-                                <input type="radio" name="<?php echo $id_jezyk; ?>" id="<?php echo $nazwa; ?>" value="<?php echo $id; ?>" <?php if ($row3['poziom_id'] == $id) { echo 'checked="checked"'; }  ?> /> <?php echo $nazwa; ?>
+                                <label for="<?php echo $nazwa.$id_jezyk; ?>">
+                                <input type="radio" name="<?php echo $id_jezyk; ?>" id="<?php echo $nazwa.$id_jezyk; ?>" value="<?php echo $id; ?>" <?php if ($row3['poziom_id'] == $id) { echo 'checked="checked"'; }  ?> /> <?php echo $nazwa; ?>
                                 </label>
                                 <?php
                                 }
@@ -229,38 +228,38 @@ session_start();
                                         $i++;
 
 				?>
-				<input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" value="<?php echo $row['nazwa']; ?>"/>
+				<input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" value="<?php echo $row['nazwa']; ?>"/>
 				<?php
 					}
                                         $i++;
 				?>
-				<input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" /><br/>
+				<input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" /><br/>
 
 			</div>
                         <a id="dodatk_dodatk1">Jeszcze jedno</a>
                         <?php $i++; ?>
 			<div id="dodatk_dodatk1_div" style="display:none">
-                            <input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" /><br/>
+                            <input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" /><br/>
 
                                 <a id="dodatk_dodatk2">Jeszcze jedno</a>
                            </div>
                          <?php $i++; ?>
 			<div id="dodatk_dodatk2_div" style="display:none">
-                            <input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" /><br/>
+                            <input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" /><br/>
 
                                 <a id="dodatk_dodatk3">Jeszcze jedno</a>
                            </div>
 
                         <?php $i++; ?>
 			<div id="dodatk_dodatk3_div" style="display:none">
-                            <input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" /><br/>
+                            <input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" /><br/>
 
                                 <a id="dodatk_dodatk4">Jeszcze jedno</a>
                            </div>
 
                          <?php $i++; ?>
 			<div id="dodatk_dodatk4_div" style="display:none">
-                            <input type="text" name="dodatk<?php echo $i; ?>" id="dodatk" /><br/>
+                            <input type="text" name="dodatk<?php echo $i; ?>" class="dodatk" /><br/>
 
 
                            </div>
@@ -269,9 +268,11 @@ session_start();
 			<input type="submit" name="edytuj_cv" id="edytuj_cv" value="Edytuj CV" />
 			</form>
 	<br/>
-	</div>	<br /><br /><center>
-	<a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>" onclick="sprawdz(event,this,' Stracisz wprowadzone zmiany. ')"><img src="img/show.jpg" border="0"></a>
-	<?php
+	</div>	<br /><br /><div id="pokaz_button">
+	<a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>" onclick="sprawdz(event,this,' Stracisz wprowadzone zmiany. ')"><img src="img/show.jpg" alt="pokaz cv" ></a>
+        </div>
+        <?php
+        mysqli_close($dbc);
 			}
 			else echo 'Nie możesz tu być, wracaj do siebie!';
 		}
@@ -282,8 +283,8 @@ session_start();
 			<br/><br/>
 	<?php 
 		} 
-		mysqli_close($dbc);
-	?></center>
+		
+	?>
 </td>
 </tr>
 <?php 

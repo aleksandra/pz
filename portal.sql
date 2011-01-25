@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 24 Sty 2011, 01:12
+-- Czas wygenerowania: 25 Sty 2011, 15:15
 -- Wersja serwera: 5.1.41
 -- Wersja PHP: 5.3.1
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `dane` (
   `aktywacja` int(11) NOT NULL DEFAULT '0',
   `klucz` varchar(5) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=51 ;
 
 --
 -- Zrzut danych tabeli `dane`
@@ -68,7 +68,8 @@ INSERT INTO `dane` (`id`, `login`, `haslo`, `typ`, `aktywacja`, `klucz`) VALUES
 (37, 'a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'p', 1, ''),
 (38, 'firma', '9841bfecf0955a4b53640f66d15042e11726c8ab', 'f', 1, ''),
 (39, 'ala', 'c6a378510e0ec1d7809694ebf1d5579f37b1642e', 'p', 1, ''),
-(49, 'z', '395df8f7c51f007019cb30201c49e884b46b92fa', 'p', 0, '');
+(49, 'z', '395df8f7c51f007019cb30201c49e884b46b92fa', 'p', 0, ''),
+(50, 'p', '7ed324d086550f729f49599c5d6250911b68dafb', 'p', 0, '');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,10 @@ CREATE TABLE IF NOT EXISTS `dodatkowe` (
 --
 
 INSERT INTO `dodatkowe` (`id`, `pracownik_id`, `nazwa`) VALUES
-(1, 1, 'prawo jazdy');
+(1, 1, ''),
+(4, 1, 'cocococo'),
+(3, 1, 'prawo jazdy kat. B'),
+(2, 1, '');
 
 -- --------------------------------------------------------
 
@@ -100,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `doswiadczenie` (
   `id_pracownika` int(11) NOT NULL,
   `od` varchar(20) NOT NULL,
   `do` varchar(20) NOT NULL,
-  `gdzie` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `gdzie` varchar(150) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`,`id_pracownika`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -109,9 +113,10 @@ CREATE TABLE IF NOT EXISTS `doswiadczenie` (
 --
 
 INSERT INTO `doswiadczenie` (`id`, `id_pracownika`, `od`, `do`, `gdzie`) VALUES
-(1, 1, '11', '1', '1'),
-(2, 1, '2008', '2008', 'sklep'),
-(3, 1, '2010', '2010', 'gdziestam');
+(1, 1, '2009-12', '2010-01', 'inny sklep'),
+(2, 1, '2008-02', '2008-03', 'Praktyka studencka w firmie handlowej na stanowisku praktykanta'),
+(3, 1, '', '', ''),
+(4, 1, '2010-01', '2010-02', 'Praca w firmie handlowej jako przedstawiciel handlowy');
 
 -- --------------------------------------------------------
 
@@ -138,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `firma` (
 
 INSERT INTO `firma` (`id`, `nazwa`, `email`, `dolaczyl`, `adres`, `tel`, `branza`, `opis`, `zdjecie`) VALUES
 (36, 'woodwaizer', 'cinoslaw_87@interia.pl', '2010-12-03 16:05:07', NULL, NULL, NULL, NULL, NULL),
-(38, 'FirmaRodzinna', 'firma@firma.pl', '2011-01-16 17:07:35', 'Wejherowo', '123', NULL, ' Nasza firma jest super!    ', 'zdjecia/1295800973zarzadz.jpg');
+(38, 'Firma', 'firma@firma.pl', '2011-01-16 17:07:35', 'Wejherowo', '123123123', NULL, ' Nasza firma jest super!     ', 'zdjecia/1295800973zarzadz.jpg');
 
 -- --------------------------------------------------------
 
@@ -158,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `jezyki` (
 
 INSERT INTO `jezyki` (`pracownik_id`, `jezyk_id`, `poziom_id`) VALUES
 (1, 5, 4),
-(1, 1, 2);
+(1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -227,7 +232,8 @@ INSERT INTO `odp` (`ogl_id`, `pracownik_id`, `data`) VALUES
 (10, 1, '2011-01-17 21:53:33'),
 (10, 39, '2011-01-18 00:23:22'),
 (14, 1, '2011-01-20 12:55:10'),
-(21, 1, '2011-01-23 18:27:07');
+(21, 1, '2011-01-23 18:27:07'),
+(21, 50, '2011-01-25 02:27:36');
 
 -- --------------------------------------------------------
 
@@ -242,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `ogloszenie` (
   `tresc` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `dodano` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
 
 --
 -- Zrzut danych tabeli `ogloszenie`
@@ -252,7 +258,37 @@ INSERT INTO `ogloszenie` (`id`, `id_firmy`, `branza_id`, `tresc`, `dodano`) VALU
 (9, 38, 3, 'Szukam sprzedawcy .', '2011-01-17 20:45:27'),
 (20, 38, 4, 'Nauczyciel pilnie potrzebny!!!', '2011-01-23 18:25:21'),
 (12, 36, 3, '!!!', '2011-01-19 19:15:04'),
-(21, 38, 1, 'PoszukujÄ™ kucharza do nowej restauracji.', '2011-01-23 18:25:41');
+(21, 38, 1, 'PoszukujÄ™ kucharza do nowej restauracji.', '2011-01-23 18:25:41'),
+(22, 38, 3, 'Przedstawiciel handlowy.\r\nWymagane doswiadczenie w branzy min. 3 lata.', '2011-01-25 14:35:08'),
+(23, 36, 1, 'PoszukujÄ™ 3 kelnerek do baru na sezon.', '2011-01-25 14:35:08'),
+(66, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:02'),
+(65, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:58'),
+(64, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:58'),
+(63, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:55'),
+(62, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:55'),
+(61, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:48'),
+(60, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:48'),
+(59, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:41'),
+(58, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:41'),
+(57, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:35'),
+(56, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:35'),
+(55, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:31'),
+(54, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:43:31'),
+(68, 36, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:05'),
+(67, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:02'),
+(69, 38, 5, 'PoszukujÄ™ 3 pracownika.', '2011-01-25 14:44:05'),
+(70, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:33'),
+(71, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:33'),
+(72, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:35'),
+(73, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:35'),
+(74, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:37'),
+(75, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:37'),
+(76, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:40'),
+(77, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:40'),
+(78, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:42'),
+(79, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:42'),
+(80, 36, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:57'),
+(81, 38, 5, 'PoszukujÄ™  pracownika.', '2011-01-25 14:44:57');
 
 -- --------------------------------------------------------
 
@@ -280,9 +316,10 @@ CREATE TABLE IF NOT EXISTS `pracownik` (
 --
 
 INSERT INTO `pracownik` (`id`, `imie`, `nazwisko`, `email`, `dolaczyl`, `data_ur`, `miejsce_ur`, `tel`, `adres`, `stan_cywilny`, `zdjecie`) VALUES
-(1, 'Aleksandra', 'Bucior', 'ooleczka@o2.pl', '2010-12-02 22:37:12', '1988-08-12', 'Wejherowo', '505933178', '', 'panna', 'zdjecia/1295463004ja.jpg'),
+(1, 'Aleksandra Joanna', 'Bucior', 'ooleczka@o2.pl', '2010-12-02 22:37:12', '1988-08-18', 'Wejherowo', '505933178', '', 'panna', 'zdjecia/1295463004ja.jpg'),
 (37, 'a', 'a', 'a', '2010-12-04 13:31:13', NULL, NULL, NULL, NULL, NULL, NULL),
 (39, 'ala', 'ala', 'ala@ala.pl', '2011-01-18 00:22:16', NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 'Pola', 'Bucio', 'ala@ala.pl', '2011-01-25 02:27:25', NULL, NULL, NULL, NULL, NULL, NULL),
 (49, 'z', 'z', 'z', '2011-01-23 21:22:11', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -296,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `wyksztalcenie` (
   `id_pracownika` int(11) NOT NULL,
   `od` varchar(20) NOT NULL,
   `do` varchar(20) NOT NULL,
-  `gdzie` varchar(50) NOT NULL,
+  `gdzie` varchar(150) NOT NULL,
   PRIMARY KEY (`id`,`id_pracownika`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
@@ -305,11 +342,12 @@ CREATE TABLE IF NOT EXISTS `wyksztalcenie` (
 --
 
 INSERT INTO `wyksztalcenie` (`id`, `id_pracownika`, `od`, `do`, `gdzie`) VALUES
-(1, 1, '2007', '2007', 'szkoÅ‚a Å„'),
-(2, 1, '06.2008', '2008', 'liceum ogolnoksztalcace'),
-(3, 1, '03.2010', '2012', 'podyplomowe'),
+(1, 1, '2006-10', '2009-05', 'Uniwersytet GdaÅ„ski, ZarzÄ…dzanie'),
+(2, 1, '', '', ''),
+(3, 1, '2010-01', '2010-02', 'Studia Podyplomowe, ZarzÄ…dzanie zasobami ludzkimi'),
 (1, 2, '2009', '2010', 'szkla'),
-(4, 1, '1', '1', 'aaa');
+(4, 1, '', '', ''),
+(5, 1, '2000-09', '2006-06', 'Liceum OgÃ³lnoksztaÅ‚cÄ…ce im. KogoÅ› w Wejherowie');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

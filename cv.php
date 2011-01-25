@@ -61,7 +61,7 @@ require_once('connectvars.php');
                     
                          <?php echo $row['stan_cywilny']; ?></p></td>
 												<td><?php if (!empty($row['zdjecie'])) { ?>
-                    <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie" align="right"/>
+                    <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie" />
                 <?php } ?></td>
 
                     </tr>
@@ -75,15 +75,16 @@ require_once('connectvars.php');
             <h4>Wykształcenie </h4>
             <table>
                 <?php
-                $query = "SELECT * FROM wyksztalcenie WHERE id_pracownika = '$id' ORDER BY od";
+                $query = "SELECT * FROM wyksztalcenie WHERE id_pracownika = '$id' ORDER BY od DESC";
                 $result = mysqli_query($dbc, $query);
                 while ($row = mysqli_fetch_array($result)) {
-                ?>
+
+                    if ($row['gdzie'] != "") {?>
                     <tr>
                         <td><?php echo $row['od']; ?> - <?php echo $row['do']; ?></td><td><?php echo $row['gdzie']; ?></td>
                     </tr>
 <?php
-                }
+                    }}
 ?>
             </table>
         </div>
@@ -92,15 +93,16 @@ require_once('connectvars.php');
             <h4>Doświadczenie zawodowe </h4>
     <table>
 <?php
-                $query = "SELECT * FROM doswiadczenie WHERE id_pracownika = '$id' ORDER BY od";
+                $query = "SELECT * FROM doswiadczenie WHERE id_pracownika = '$id' ORDER BY od DESC";
                 $result = mysqli_query($dbc, $query);
                 while ($row = mysqli_fetch_array($result)) {
-                ?>
+                    if ($row['gdzie'] != "") {
+                    ?>
                     <tr>
                         <td><?php echo $row['od']; ?> - <?php echo $row['do']; ?></td><td><?php echo $row['gdzie']; ?></td>
                     </tr>
 <?php
-                }
+                    } }
 ?>
             </table>
         </div>
@@ -130,7 +132,7 @@ require_once('connectvars.php');
             <h4>Dodatkowe umiejętności, kursy, zaświadczenia</h4>
             <table>
                 <?php
-                $query = "SELECT * FROM dodatkowe WHERE pracownik_id = '$id'";
+                $query = "SELECT * FROM dodatkowe WHERE pracownik_id = '$id' ";
                 $result = mysqli_query($dbc, $query);
                 while ($row = mysqli_fetch_array($result)) {
                 ?>
@@ -146,11 +148,11 @@ require_once('connectvars.php');
        
 
         <br/>
-    </div><br /><br /><center>
+    </div><br /><br /><div class="edytuj_button">
     <?php
                 if ($_SESSION['id_obecne'] == $id) {
 
-                    echo '<a href="edytuj_cv.php"><img src="img/edit.jpg" border="0"></a>';
+                    echo '<a href="edytuj_cv.php"><img src="img/edit.jpg" ></a>';
                 }
             } else { //jezeli niezalogowany
     ?>
@@ -160,7 +162,7 @@ require_once('connectvars.php');
 <?php
             }
 ?>
-           </center> </td>
+           </div> </td>
             </tr>
 <?php
             require_once('footer.html');

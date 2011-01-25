@@ -8,7 +8,7 @@ if (isset($_SESSION['id_obecne'])) {
 	
         ?>
        
-        <a id="add_oglo"> Dodaj ogłoszenie </a>
+        <a id="add_oglo_wypisz"> Dodaj ogłoszenie </a>
          <div id="add_oglo_div" <?php  if ($_SESSION['pokaz'] != 1 ) {echo 'style="display:none"';} $_SESSION['pokaz'] = 0;?> >
            <?php
 		echo $_SESSION['err_add_oglo'];
@@ -16,7 +16,7 @@ if (isset($_SESSION['id_obecne'])) {
 	   ?>
            <form method="post" action="add_oglo.php" >
               
-               <label for="branza"> Branża  </label>
+                Branża
                <select name="branza">
                    <?php
 

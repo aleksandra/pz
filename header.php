@@ -3,25 +3,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>ePortal pracy</title>
-        <script language="JavaScript">
-             if (-1 != navigator.userAgent.indexOf("Chrome")) {
-                document.write('<link rel="stylesheet" type="text/css" href="styles.css" />');
-            }
-            else if (-1 != navigator.userAgent.indexOf("Mozilla")) {
-                document.write('<link rel="stylesheet" type="text/css" href="styles.css" />');
-            }
-            else if (-1 != navigator.userAgent.indexOf("MSIE")) {
-                document.write('<link rel="stylesheet" type="text/css" href="styles.css" />');
-            }
-         </script>
-        <!--link rel="stylesheet" type="text/css" href="styles.css" /-->
-        <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type=""  src="script/skrypty.js"></script>
+       
+               
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script  src="http://code.jquery.com/jquery-latest.js"></script>
+        <script  src="script/skrypty.js"></script>
        <!-- <script src="script/snow.js"></script>-->
     </head>
     <body>
 
-        <table align="center" style="position: absolute; left:100px; top: 0px;" width="1020px" cellpadding="0" cellspacing="0">
+        <table id="tabela" cellspacing="0">
             <tr>
                 <td CLASS="top">
                     <div style="z-index:1; left:41px; top:130px; position: absolute;">
