@@ -53,8 +53,8 @@ require_once('header.php');
 
                             <img src="img/panel2.jpg" alt="panel firmy"><br />
                             <a id="zmien_haslo_wypisz"> <img src="img/haslo.jpg" alt="zmien hasło"> </a><br />
-                            <a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>" > Pokaż wizytówkę </a><br/>
-                            <a href="edytuj_wiz.php"> Edytuj wizytówkę </a> <br />
+                            <a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>" ><img src="img/wizit.jpg" alt="pokaz wizytowke"> </a><br/>
+                            <a href="edytuj_wiz.php"> <img src="img/wizit2.jpg" alt="edytuj wizytowke">  </a> <br />
 
 
 <?php } ?>
@@ -97,8 +97,11 @@ require_once('header.php');
                         </td></tr></table>
         </div>
         <div class="nav" >
-                <div id="ogloszenia_div" style="display:none" >
-                        <b>Twoje ogłoszenia:</b>
+                <?php echo $_SESSION['msg_aplikuj']; $_SESSION['msg_aplikuj']=""; ?>
+                <div id="ogloszenia_div" <?php if($_SESSION['pokazuj'] != 1) { echo 'style="display:none"';  } else {$_SESSION['pokazuj'] = 0;} ?> >
+                       <br />                       <br />
+                       <br />
+
                         <?php
                             $query2 = "SELECT *,firma.id AS firma_id FROM  branza, firma, ogloszenie, odp WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id AND odp.pracownik_id='$id_obecne' AND ogloszenie.id= odp.ogl_id ORDER BY dodano DESC ";
                             $result2 = mysqli_query($dbc, $query2);
@@ -110,17 +113,24 @@ require_once('header.php');
                                 $branza = $row2['branza_nazwa'];
                                 $tresc = $row2['tresc'];
                                 $odp_data = $row2['data'];
-                        ?>
-                                <h2>Ogłoszenie <?php echo $licznik;
-                                $licznik++ ?></h2>
-                                Dodano: <?php echo $dodano; ?><br/>
-                                Branża: <?php echo $branza; ?><br/>
-                                Firma: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a><br/>
-<?php echo $tresc; ?><br/><br/>
-                                Przesłano CV: <?php echo $odp_data;
-                            } ?>
+                                $id = $row2['id'];
+                        ?><div id="lala">
+                               <b> Ogłoszenie <?php echo $licznik;
+                                $licznik++ ?></b> &diams;
+                                Dodano: <?php echo $dodano; ?> &diams;
+                                Branża: <?php echo $branza; ?> &diams;
+                                Firma: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a></div>
+								<div id="la"><b>
+<?php echo $tresc; ?></b></div><div id="al">
+                                Przesłano CV: <?php echo $odp_data;?>
+                                | <a href="rezygnuj.php?id=<?php echo $id; ?>" onclick="sprawdz(event,this,'')">Rezygnuj</a> <br /><br/>
+                               <?php
+                           } ?><br /></div><br /><br />
+
+                            <?php if ($licznik == 1) {?>
 
                             <br/>Narazie żadnych <br/>
+                            <?php } ?>
                     </div>
 
             </div>
@@ -131,9 +141,9 @@ require_once('header.php');
                             mysqli_close($dbc);
                         } else { //jezeli niezalogowany
 ?>
-                            <br/><br/><center>
+                            <br/><br/>
                             	Zaloguj się lub <a href='index.php'>zarejestruj</a>, aby mieć dostęp do tej strony.
-                                <br/><br/></center>
+                                <br/><br/>
     <?php
                         }
     ?>

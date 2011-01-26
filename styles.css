@@ -22,10 +22,44 @@ body, textarea {
     border:0px;
 }
 
-#ogloszenia_div, .edytuj_button, #pokaz_button {
+#ogloszenia_div, .edytuj_button, #pokaz_button, #new {
     text-align: center;
 }
 
+#lala
+{
+	background-color: #ffffff;
+}
+#lala2
+{
+font-size:12px;
+	background-color: #ffffff;
+}
+#la
+{
+background-color: #dee1d9;
+}
+#al
+{
+background-color: #b9bcb5;
+}
+#opis {
+width:90%;
+border: solid #858585 0px;
+text-align:left;
+	background-color: #dee1d9;
+	    -moz-border-radius:1px 1px 1px 1px;
+    -webkit-border-bottom-left-radius: 1px;
+    -webkit-border-bottom-right-radius:1px;
+	    -webkit-border-top-left-radius: 1px;
+    -webkit-border-top-right-radius:1px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;    
+	border-top-left-radius:10px;
+    border-top-right-radius:10px;
+  margin-top: 20px;
+  padding: 5px;
+}
 
 img {
     text-align:right;

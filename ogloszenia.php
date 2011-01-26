@@ -17,7 +17,8 @@ if (isset($_SESSION['id_obecne'])) {
 	
         ?>
        
-        <a id="add_oglo_wypisz"> Dodaj ogłoszenie </a>
+         <div id="new">
+        <a id="add_oglo_wypisz"><img src="img/new_o.jpg"> </a>
          <div id="add_oglo_div" <?php  if ($_SESSION['pokaz'] != 1 ) {echo 'style="display:none"';} $_SESSION['pokaz'] = 0;?> >
            <?php
 		echo $_SESSION['err_add_oglo'];
@@ -45,19 +46,17 @@ if (isset($_SESSION['id_obecne'])) {
                <input type="submit" name="add_oglo" id="add_oglo" value="Dodaj" />
            </form>
         
-        </div>
+        </div></div>
        <br/>
            <?php
 		echo $_SESSION['git_add_oglo'];
 		$_SESSION['git_add_oglo'] = "";
 
-       
-
-           $query = "SELECT * FROM ogloszenie,branza WHERE id_firmy = '$id_obecne' AND ogloszenie.branza_id = branza.branza_id ORDER BY dodano DESC LIMIT $poczatek , $ile_na_strone ";
+           $query = "SELECT * FROM ogloszenie,branza WHERE id_firmy = '$id_obecne' AND ogloszenie.branza_id = branza.branza_id ORDER BY dodano DESC LIMIT $poczatek , $ile_na_strone";
 	$result = mysqli_query($dbc, $query);
-	
+	$licznik=1;
                 ?>
-        <h1> Twoje ogłoszenia: </h1>
+        <img src="img/tg.jpg">
         <div id="oglo_lista">
         <?php
         while ($row = mysqli_fetch_array($result)) {
@@ -70,12 +69,14 @@ if (isset($_SESSION['id_obecne'])) {
 
         
             <?php echo $_SESSION['git_edit_oglo'];
-		$_SESSION['git_edit_oglo'] = ""; ?>
-            <h2>Ogłoszenie <?php echo $licznik; $licznik++?></h2>
-            Dodano: <?php echo $dodano; ?><br/>
-            Branża: <?php echo $branza; ?><br/>
-            <?php echo $tresc; ?><br/>
-
+		$_SESSION['git_edit_oglo'] = ""; ?><br /><br /><div id="lala">
+            <b>Ogłoszenie <?php echo $licznik; $licznik++?></b> &diams;
+            Dodano: <?php echo $dodano; ?> &diams;
+            Branża: <?php echo $branza; ?> &diams;
+			 <a href="delete_oglo.php?id=<?php echo $id; ?>" onclick="sprawdz(event,this,'')" >Usuń</a>
+</div><div id="la">
+           <b><?php echo $tresc; ?></b>
+</div>
             <?php
              $query2 = "SELECT *,COUNT(*) FROM odp, pracownik WHERE ogl_id='$id' AND pracownik_id=pracownik.id ORDER BY data DESC";
              $result2 = mysqli_query($dbc, $query2);
@@ -84,8 +85,7 @@ if (isset($_SESSION['id_obecne'])) {
             $ile = $row2['COUNT(*)'];
            
             ?>
-
-            <a href="delete_oglo.php?id=<?php echo $id; ?>" onclick="sprawdz(event,this,'')" >Usuń</a> | <a onclick='odpowiedzi("<?php echo $id; ?>")'> Odpowiedzi(<?php echo $ile;?> ) </a>
+<a onclick='odpowiedzi("<?php echo $id; ?>")'> Odpowiedzi(<?php echo $ile;?> ) </a>
 
             <?php if ( $ile > 0 ) { ?>
             <div id="odpowiedzi<?php echo $id; ?>_div" style="display:none">

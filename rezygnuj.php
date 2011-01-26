@@ -17,6 +17,7 @@ if (isset($_SESSION['id_obecne']) && $_SESSION['typ'] == 'p') {
       mysqli_close($dbc);
 
       $_SESSION['msg_aplikuj']="Zrezygnowano";
+      $_SESSION['pokazuj'] = 1;
      
       $home_url = $_SERVER['HTTP_REFERER'];
       header('Location: ' . $home_url);

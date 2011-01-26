@@ -24,36 +24,26 @@ require_once('connectvars.php');
         <br />
         <br />
         <div id="wizytowka">
-            <?php echo $row['nazwa']; ?><br />
+		<table ><tr><td>
+		<?php if (!empty($row['zdjecie'])) { ?>
+                            <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie"/>
+                        <?php } ?>
+						</td><td>
+      <h3>      <?php echo $row['nazwa']; ?></h3>
             <div id="dane_firmy" style="display:block">
                 <h4>Dane firmy </h4>
-                <table>
-                    <tr>
-                        <td><p>	
-    				<?php if (!empty($row['adres'])) { ?>Adres:<br />  <?php } ?>
-                                <?php if (!empty($row['tel'])) { ?>Telefon Kontaktowy:<br /> <?php } ?>
-    				Email:<br />
-                                <?php if (!empty($row['branza'])) { ?>Branża: <br/> <?php } ?>
-                                <?php if (!empty($row['opis'])) { ?>Opis:<br/> <?php } ?>
-                        </td>
-                        <td><p>
+                
+    				<?php if (!empty($row['adres'])) { ?>Adres: <?php echo $row['adres']; ?><br />  <?php } ?>
+                                <?php if (!empty($row['tel'])) { ?>Telefon Kontaktowy: <?php echo $row['tel']; ?> <br /><?php } ?>
+					 <?php if (!empty($row['email'])) { ?>Email: <?php echo $row['email']; ?> <br /><?php } ?>
+                                <?php if (!empty($row['branza'])) { ?>Branża: <?php echo $row['branza']; ?><br /><br /> <?php } ?>
+                               <div id="opis">
+							   <?php if (!empty($row['opis'])) { ?><b>Opis:</b> <?php echo $row['opis']; ?><br /><?php } ?>
+                        </div>
+                        
                                
-                                <?php if (!empty($row['adres'])) { ?>
-                                    <?php echo $row['adres']; ?>
-                                <?php }
-                                if (!empty($row['tel'])) { ?>
-                                    <br /> <?php echo $row['tel']; ?>
-                                <?php } ?>
-                                <br /><?php echo $row['email']; 
-                                if (!empty($row['branza'])) { ?>
-                                    <br/><?php echo $row['branza']; ?>
-                                <?php } if (!empty($row['opis'])) { ?>
-                                    <br/><?php echo $row['opis']; ?>
-                                <?php } ?>
+                              
                         </td>
-                        <td><?php if (!empty($row['zdjecie'])) { ?>
-                            <img src="<?php echo $row['zdjecie']; ?>" alt="zdjęcie" />
-                        <?php } ?></td>
 
                     </tr>
                 </table>
@@ -64,7 +54,7 @@ require_once('connectvars.php');
         <div class="edytuj_button">
         <?php
             if ($_SESSION['id_obecne'] == $id) {
-                echo '<a href="edytuj_wiz.php">Edytuj</a>';
+                echo '<a href="edytuj_wiz.php"><img src="img/blue1.jpg" alt="pokaz wizytowke" ></a></a>';
             }
       } else { //jezeli niezalogowany
         ?>
@@ -73,7 +63,7 @@ require_once('connectvars.php');
          <br/><br/>
         <?php
      }
-        ?>
+        ?><br /><br />
         </div> </td>
                 </tr>
 <?php

@@ -9,6 +9,7 @@ if (isset($_SESSION['id_obecne'])) {
             $page = 1;
         } else {
             $page = $_GET['page'];
+            $pokazuj=1;
         }
        $ile_na_strone = 5;
        $poczatek = ($page-1)*$ile_na_strone +3;
@@ -62,7 +63,7 @@ if (isset($_SESSION['id_obecne'])) {
              <?php
             } ?>
 
-<div id="oglo_lista_div" style="display:none">
+<div id="oglo_lista_div" <?php if($pokazuj!=1) { echo 'style="display:none"'; } ?> >
               <?php
 $query = "SELECT *, firma.id AS firma_id FROM  branza, firma, ogloszenie WHERE ogloszenie.id_firmy = firma.id AND branza.branza_id = ogloszenie.branza_id ORDER BY dodano DESC LIMIT $poczatek,$ile_na_strone";
 	$result = mysqli_query($dbc, $query);
@@ -74,31 +75,32 @@ $query = "SELECT *, firma.id AS firma_id FROM  branza, firma, ogloszenie WHERE o
         $dodano = $row['dodano'];
         $tresc = $row['tresc'];
         $firma = $row['nazwa'];
+         $firma_id = $row['firma_id'];
 
         $query2 = "SELECT * FROM odp WHERE pracownik_id='$id_obecne' AND ogl_id='$id' ";
         $result2 = mysqli_query($dbc, $query2);
 
         ?>
-
-            <h2>Ogłoszenie <?php echo $licznik; $licznik++?></h2>
-            Dodano: <?php echo $dodano; ?><br/>
-            Branża: <?php echo $branza; ?><br/>
-            Dodane przez: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a><br/>
-            <b> <?php echo $tresc; ?></b><br/>
-           
+<br /><br /><div id="lala">
+            <b>Ogłoszenie <?php echo $licznik; $licznik++?></b> &diams; 
+            Dodano: <?php echo $dodano; ?> &diams; 
+            Branża: <?php echo $branza; ?> &diams; 
+            Dodane przez: <a href="wizytowka.php?id=<?php echo $firma_id ?>"><?php echo $firma; ?></a></div><div id="la">
+            <b> <?php echo $tresc; ?></b></div>
+           <div id="al">
             <?php if (!$row2 = mysqli_fetch_array($result2)) {?>
-            <a href="aplikuj.php?id=<?php echo $id; ?>" >Aplikuj</a>
+            <a href="aplikuj.php?id=<?php echo $id; ?>" onclick="sprawdz(event, this,'')">Aplikuj</a>
             <?php }
             else {?>
-                Aplikowałeś na to ogłoszenie. | <a href="rezygnuj.php?id=<?php echo $id; ?>" >Rezygnuj</a>
+                Aplikowałeś na to ogłoszenie. | <a href="rezygnuj.php?id=<?php echo $id; ?>" onclick="sprawdz(event, this,'')">Rezygnuj</a>
             <?php }
 
             }
-?><br/><br/><?php
+?></div><br/><br/><?php
         $query = "SELECT COUNT(*) FROM ogloszenie ";
         $result = mysqli_query($dbc, $query);
         $row = mysqli_fetch_array($result);
-        $ilosc_ogolem = $row['COUNT(*)'];
+        $ilosc_ogolem = $row['COUNT(*)']-3;
         $ile_stron = ceil($ilosc_ogolem/$ile_na_strone);
 
          if ($ilosc_ogolem != 0)  {echo 'Strona:';

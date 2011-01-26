@@ -22,6 +22,7 @@ session_start();
 				
 					
 	?>
+	<br /><br />
 	
 	<div id="cv_edit">
 		<img src="img/cv.jpg" alt="cv" ><br /><br />
@@ -268,8 +269,10 @@ session_start();
 			<input type="submit" name="edytuj_cv" id="edytuj_cv" value="Edytuj CV" />
 			</form>
 	<br/>
+
 	</div>	<br /><br /><div id="pokaz_button">
 	<a href="cv.php?id=<?php echo $_SESSION['id_obecne']; ?>" onclick="sprawdz(event,this,' Stracisz wprowadzone zmiany. ')"><img src="img/show.jpg" alt="pokaz cv" ></a>
+	<br/><br/>
         </div>
         <?php
         mysqli_close($dbc);

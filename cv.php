@@ -22,6 +22,7 @@ require_once('connectvars.php');
         $result = mysqli_query($dbc, $query);
         $row = mysqli_fetch_array($result);
     ?>
+	<br/><br/>
 	<img src="img/cv.jpg"><br /><br />
         <div id="cv">
 
@@ -156,12 +157,12 @@ require_once('connectvars.php');
                 }
             } else { //jezeli niezalogowany
     ?>
-                <br/><br/>
+                <br/><br/><br/><br/>
                         				Zaloguj się lub <a href='index.php'>zarejestruj</a>, aby mieć dostęp do tej strony.
                 <br/><br/>
 <?php
             }
-?>
+?><br/><br/>
            </div> </td>
             </tr>
 <?php

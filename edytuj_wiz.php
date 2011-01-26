@@ -42,12 +42,12 @@ session_start();
                     <legend>Zdjęcie</legend>
                     <label for="zdjecie">Zdjęcie w formacie jpg, nie większe niż 32 kB.</label><br/>
                     <input type="file" id="zdjecie" name="zdjecie" />
-            </fieldset>
+            </fieldset>			
             <input type="submit" name="edytuj_wiz" id="edytuj_wiz" value="Edytuj" />
 	</form>
 	<br/>
     </div><br /><br /><div id="pokaz_button">
-	<a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>">Pokaż wizytówkę bez wprowadzonych zmian</a>
+	<a href="wizytowka.php?id=<?php echo $_SESSION['id_obecne']; ?>" onclick="sprawdz(event,this,' Stracisz wprowadzone zmiany. ')" ><img src="img/blue2.jpg" alt="pokaz wizytowke" /></a>
 	<?php
 			}
 			else echo 'Nie możesz tu być, wracaj do siebie!';
@@ -60,7 +60,7 @@ session_start();
 	<?php
 		}
 		mysqli_close($dbc);
-	?></div>
+	?>	<br/><br/></div>
 </td>
 </tr>
 <?php
